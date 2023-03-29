@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
         bondViewModel()
         
     }
-    
+     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel.getData()
@@ -58,6 +58,16 @@ class MainViewController: UIViewController {
             }
             self.cellDataSource = movies
             self.reloadTableView()
+        }
+    }
+    
+    func openDetail(movieId: Int) {
+        guard let movie = viewModel.retiveMovie(with: movieId) else { return }
+        
+        let detailViewModel = DetailsMovieViewModel(movie: movie)
+        let detailController = DetailsMovieViewController(viewModel: detailViewModel)
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(detailController, animated: true)
         }
     }
 }

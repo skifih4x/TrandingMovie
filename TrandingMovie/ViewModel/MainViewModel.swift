@@ -50,4 +50,9 @@ class MainViewModel {
     func getMovieTitle(_ movie: Movie) -> String {
         movie.title ?? movie.name ?? ""
     }
+    
+    func retiveMovie( with id: Int) -> Movie? {
+        guard let movie = dataSource?.results.first(where: {$0.id == id}) else { return nil}
+        return movie
+    }
 }

@@ -49,4 +49,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         150
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let movieId = cellDataSource?[indexPath.row].id else { return }
+        openDetail(movieId: movieId)
+    }
+    
 }
